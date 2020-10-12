@@ -24,14 +24,3 @@ public class TestingMain {
         }
     }
 }
-
-
-//        SimpleUser simpleUser = new SimpleUser("theForumUser");
-//
-//        String result = simpleUser.getUsername();
-//
-//        if (result.equals("theForumUser")){
-//            System.out.println("Simple user - test OK");
-//        } else {
-//            System.out.println("Simple user - Error!");
-//        }
