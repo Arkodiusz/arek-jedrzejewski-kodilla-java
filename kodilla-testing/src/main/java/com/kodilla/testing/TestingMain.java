@@ -6,21 +6,5 @@ package com.kodilla.testing;
 public class TestingMain {
     public static void main(String[] args) {
 
-        int a = 10;
-        int b = 3;
-
-        Calculator calculator = new Calculator();
-
-        if (calculator.add(a, b) == a + b) {
-            System.out.println("Add - test OK");
-        } else {
-            System.out.println("Add - Error!");
-        }
-
-        if (calculator.sub(a, b) == a - b) {
-            System.out.println("Sub - test OK");
-        } else {
-            System.out.println("Sub - Error!");
-        }
     }
 }
