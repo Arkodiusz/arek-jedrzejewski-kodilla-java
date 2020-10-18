@@ -1,3 +1,4 @@
+//6.4
 package com.kodilla.testing.shape;
 
 import java.util.List;
@@ -12,15 +13,15 @@ public class ShapeCollector {
     }
 
     public void addFigure(Shape shape) {
-
+        shapes.add(shape);
     }
 
     public void removeFigure(Shape shape) {
-
+        shapes.remove(shape);
     }
 
     public Shape getFigure(int n) {
-        return null;
+        return shapes.get(n);
     }
 
     public String showFigures() {

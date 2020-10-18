@@ -1,3 +1,4 @@
+//6.4
 package com.kodilla.testing.shape;
 
 public class Rectangle implements Shape{
