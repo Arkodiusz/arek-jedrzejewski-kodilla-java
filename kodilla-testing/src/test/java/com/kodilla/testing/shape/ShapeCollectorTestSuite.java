@@ -29,113 +29,122 @@ public class ShapeCollectorTestSuite {
         System.out.println("ShapeCollector Test Suite: end");
     }
 
-    @DisplayName("check behavior when adding element")
-    @Test
-    void testAddFigure() {
-        //Given
-        Shape circle = new Circle(5);
-        Shape square = new Square(6);
-        Shape rectangle = new Rectangle(7, 7);
+    @Nested
+    @DisplayName("Tests for collection editing methods")
+    class Editing {
 
-        ShapeCollector collector = new ShapeCollector();
+        @DisplayName("check behavior when adding element")
+        @Test
+        void testAddFigure() {
+            //Given
+            Shape circle = new Circle(5);
+            Shape square = new Square(6);
+            Shape rectangle = new Rectangle(7, 7);
 
-        collector.addFigure(circle);
-        collector.addFigure(square);
-        collector.addFigure(rectangle);
+            ShapeCollector collector = new ShapeCollector();
 
-        //When
-        List<Shape> testShapes = new ArrayList<>();
-        testShapes.add(circle);
-        testShapes.add(square);
-        testShapes.add(rectangle);
+            collector.addFigure(circle);
+            collector.addFigure(square);
+            collector.addFigure(rectangle);
 
-        //Then
-        Assertions.assertEquals(testShapes, collector.getShapes());
-    }
+            //When
+            List<Shape> testShapes = new ArrayList<>();
+            testShapes.add(circle);
+            testShapes.add(square);
+            testShapes.add(rectangle);
 
-    @DisplayName("check behavior when removing element")
-    @Test
-    void testRemoveFigure() {
-        //Given
-        Shape circle = new Circle(5);
-        Shape square = new Square(6);
-        Shape rectangle = new Rectangle(7, 7);
-
-        ShapeCollector collector = new ShapeCollector();
-
-        collector.addFigure(circle);
-        collector.addFigure(square);
-        collector.addFigure(rectangle);
-        collector.removeFigure(circle);
-
-        //When
-        List<Shape> testShapes = new ArrayList<>();
-        testShapes.add(circle);
-        testShapes.add(square);
-        testShapes.add(rectangle);
-        testShapes.remove(circle);
-
-        //Then
-        Assertions.assertEquals(testShapes, collector.getShapes());
-    }
-
-    @DisplayName("check behavior when getting specified element")
-    @Test
-    void testGetFigure() {
-        //Given
-        Shape circle = new Circle(5);
-        Shape square = new Square(6);
-        Shape rectangle = new Rectangle(7, 7);
-
-        ShapeCollector collector = new ShapeCollector();
-
-        collector.addFigure(circle);
-        collector.addFigure(square);
-        collector.addFigure(rectangle);
-
-        Shape actual = collector.getFigure(2);
-
-        //When
-        List<Shape> testShapes = new ArrayList<>();
-        testShapes.add(circle);
-        testShapes.add(square);
-        testShapes.add(rectangle);
-
-        Shape expected = testShapes.get(2);
-
-        //Then
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @DisplayName("check behavior when printing all elements")
-    @Test
-    void testShowFigures() {
-        //Given
-        Shape circle = new Circle(5);
-        Shape square = new Square(6);
-        Shape rectangle = new Rectangle(7, 7);
-
-        ShapeCollector collector = new ShapeCollector();
-
-        collector.addFigure(circle);
-        collector.addFigure(square);
-        collector.addFigure(rectangle);
-
-        String actual = collector.showFigures();
-
-        //When
-        List<Shape> testShapes = new ArrayList<>();
-        testShapes.add(circle);
-        testShapes.add(square);
-        testShapes.add(rectangle);
-
-        String expected = "";
-
-        for(Shape testShape : testShapes) {
-            expected+=testShape.getShapeName() + "; ";
+            //Then
+            Assertions.assertEquals(testShapes, collector.getShapes());
         }
 
-        //Then
-        Assertions.assertEquals(expected, actual);
+        @DisplayName("check behavior when removing element")
+        @Test
+        void testRemoveFigure() {
+            //Given
+            Shape circle = new Circle(5);
+            Shape square = new Square(6);
+            Shape rectangle = new Rectangle(7, 7);
+
+            ShapeCollector collector = new ShapeCollector();
+
+            collector.addFigure(circle);
+            collector.addFigure(square);
+            collector.addFigure(rectangle);
+            collector.removeFigure(circle);
+
+            //When
+            List<Shape> testShapes = new ArrayList<>();
+            testShapes.add(circle);
+            testShapes.add(square);
+            testShapes.add(rectangle);
+            testShapes.remove(circle);
+
+            //Then
+            Assertions.assertEquals(testShapes, collector.getShapes());
+        }
+    }
+
+    @Nested
+    @DisplayName("Tests for methods that access data")
+    class Access {
+        @DisplayName("check behavior when getting specified element")
+        @Test
+        void testGetFigure() {
+            //Given
+            Shape circle = new Circle(5);
+            Shape square = new Square(6);
+            Shape rectangle = new Rectangle(7, 7);
+
+            ShapeCollector collector = new ShapeCollector();
+
+            collector.addFigure(circle);
+            collector.addFigure(square);
+            collector.addFigure(rectangle);
+
+            Shape actual = collector.getFigure(2);
+
+            //When
+            List<Shape> testShapes = new ArrayList<>();
+            testShapes.add(circle);
+            testShapes.add(square);
+            testShapes.add(rectangle);
+
+            Shape expected = testShapes.get(2);
+
+            //Then
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @DisplayName("check behavior when printing all elements")
+        @Test
+        void testShowFigures() {
+            //Given
+            Shape circle = new Circle(5);
+            Shape square = new Square(6);
+            Shape rectangle = new Rectangle(7, 7);
+
+            ShapeCollector collector = new ShapeCollector();
+
+            collector.addFigure(circle);
+            collector.addFigure(square);
+            collector.addFigure(rectangle);
+
+            String actual = collector.showFigures();
+
+            //When
+            List<Shape> testShapes = new ArrayList<>();
+            testShapes.add(circle);
+            testShapes.add(square);
+            testShapes.add(rectangle);
+
+            String expected = "";
+
+            for (Shape testShape : testShapes) {
+                expected += testShape.getShapeName() + "; ";
+            }
+
+            //Then
+            Assertions.assertEquals(expected, actual);
+        }
     }
 }
