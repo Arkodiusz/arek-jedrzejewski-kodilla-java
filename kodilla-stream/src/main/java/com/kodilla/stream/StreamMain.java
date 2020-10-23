@@ -1,11 +1,8 @@
 package com.kodilla.stream;
 
 import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.lambda.SaySomething;
-import com.kodilla.stream.lambda.Executor;
-import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.reference.FunctionalCalculator;
+//import com.kodilla.stream.lambda.ExpressionExecutor;
+//import com.kodilla.stream.reference.FunctionalCalculator;
 
 import static java.lang.String.valueOf;
 
@@ -14,50 +11,48 @@ public class StreamMain {
 
         PoemBeautifier poemBeautifier = new PoemBeautifier();
 
-        String text = "kodilla java bootcamp";
+        String text1 = "lockdown";
+        String text2 = "kodilla";
+        String text3 = "vertical";
+        String text4 = "conversion to camel case";
 
-        poemBeautifier.beautify(text, (ugly) -> text.toUpperCase());
+        poemBeautifier.beautify(text1, String::toUpperCase);
 
-        poemBeautifier.beautify(text, (ugly) -> {
-            String string = text.replace('a', '@');
+        poemBeautifier.beautify(text2, (ugly) -> {
+            String string = ugly.replace('a', '@');
             string = string.replace('o', '0');
-            return string;
+            return "\n" + string;
         });
 
-        poemBeautifier.beautify(text, (ugly) -> {
-            char[] textArray = text.toCharArray();
-            String string = "\n";
-            for(int i = 0; i < textArray.length; i++) {
-                string += textArray[i] + "\n";
+        poemBeautifier.beautify(text3, (ugly) -> {
+            char[] textArray = ugly.toCharArray();
+            StringBuilder string = new StringBuilder("\n");
+            for (char c : textArray) {
+                string.append(c).append("\n");
             }
-            return string;
+            return string.toString();
         });
 
-        poemBeautifier.beautify(text, (ugly) -> {
-            char[] textArray = text.toCharArray();
-            String string = "";
-            int toReplace = 0;
-
-            String c = valueOf(textArray[0]);
-            c=c.toUpperCase();
-            textArray[0]=c.charAt(0);
+        poemBeautifier.beautify(text4, (ugly) -> {
+            char[] textArray = ugly.toCharArray();
+            StringBuilder string = new StringBuilder();
 
             for (int i = 0; i < textArray.length; i++) {
                 if (textArray[i] == ' ') {
                     textArray[i + 1] = textArray[i+1];
-                    c = valueOf(textArray[i+1]);
+                    String c = valueOf(textArray[i+1]);
                     c = c.toUpperCase();
                     textArray[i+1]=c.charAt(0);
                 }
             }
 
-            for (int i = 0; i < textArray.length; i++) {
-                if (textArray[i] != ' ') {
-                    string+=textArray[i];
+            for (char value : textArray) {
+                if (value != ' ') {
+                    string.append(value);
                 }
             }
 
-            return string;
+            return string.toString();
         });
 
 //        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
