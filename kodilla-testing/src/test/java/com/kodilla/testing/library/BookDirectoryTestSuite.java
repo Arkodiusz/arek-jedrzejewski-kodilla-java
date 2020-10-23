@@ -6,13 +6,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Matchers.*;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -59,7 +56,7 @@ class BookDirectoryTestSuite {
 
         // Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOf0Books = new ArrayList<Book>();
+        List<Book> resultListOf0Books = new ArrayList<>();
         List<Book> resultListOf15Books = generateListOfNBooks(15);
         List<Book> resultListOf40Books = generateListOfNBooks(40);
         when(libraryDatabaseMock.listBooksWithCondition(anyString()))
@@ -84,8 +81,6 @@ class BookDirectoryTestSuite {
     void testListBooksWithConditionFragmentShorterThan3() {
         // Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOfBooks = new ArrayList<>();
-        Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
 
         // When
         List<Book> theListOfBooks10 = bookLibrary.listBooksWithCondition("An");
@@ -100,10 +95,11 @@ class BookDirectoryTestSuite {
     void testlistBooksInHandsOfEmpty() {
         // Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> borrowedBooks = new ArrayList<Book>();
+        List<Book> borrowedBooks = new ArrayList<>();
         LibraryUser user1 = new LibraryUser("User", "One", "123456789");
 
-        bookLibrary.register.put(user1, borrowedBooks);
+        when(libraryDatabaseMock.listBooksInHandsOf(user1))
+                .thenReturn(borrowedBooks);
 
         // When
         List<Book> borrowedZero = bookLibrary.listBooksInHandsOf(user1);
@@ -122,7 +118,8 @@ class BookDirectoryTestSuite {
 
         borrowedBooks.add(book1);
 
-        bookLibrary.register.put(user1, borrowedBooks);
+        when(libraryDatabaseMock.listBooksInHandsOf(user1))
+                .thenReturn(borrowedBooks);
 
         // When
         List<Book> borrowedOne = bookLibrary.listBooksInHandsOf(user1);
@@ -138,7 +135,8 @@ class BookDirectoryTestSuite {
         LibraryUser user1 = new LibraryUser("User", "One", "123456789");
         List<Book> borrowedBooks = generateListOfNBooks(5);
 
-        bookLibrary.register.put(user1, borrowedBooks);
+        when(libraryDatabaseMock.listBooksInHandsOf(user1))
+                .thenReturn(borrowedBooks);
 
         // When
         List<Book> borrowedFive = bookLibrary.listBooksInHandsOf(user1);

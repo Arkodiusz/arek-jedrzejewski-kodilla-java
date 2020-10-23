@@ -8,14 +8,12 @@ import java.util.Map;
 public class BookLibrary {
     LibraryDatabase libraryDatabase;
 
-    public static Map<LibraryUser, List<Book>> register = new HashMap<>();
-
     public BookLibrary(LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
     }
 
     public List<Book> listBooksWithCondition(String titleFragment) {
-        List<Book> bookList = new ArrayList<Book>();
+        List<Book> bookList = new ArrayList<>();
         if (titleFragment.length() < 3) return bookList;
         List<Book> resultList = libraryDatabase
                 .listBooksWithCondition(titleFragment);
@@ -26,8 +24,7 @@ public class BookLibrary {
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
 
-        return register.get(libraryUser);
-
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 
 }
