@@ -19,23 +19,23 @@ public class StreamMain {
         poemBeautifier.beautify(text1, String::toUpperCase);
 
         poemBeautifier.beautify(text2, (ugly) -> {
-            String string = ugly.replace('a', '@');
-            string = string.replace('o', '0');
-            return "\n" + string;
+            String beautiful = ugly.replace('a', '@');
+            beautiful = beautiful.replace('o', '0');
+            return "\n" + beautiful;
         });
 
         poemBeautifier.beautify(text3, (ugly) -> {
             char[] textArray = ugly.toCharArray();
-            StringBuilder string = new StringBuilder("\n");
+            StringBuilder beautiful = new StringBuilder("\n");
             for (char c : textArray) {
-                string.append(c).append("\n");
+                beautiful.append(c).append("\n");
             }
-            return string.toString();
+            return beautiful.toString();
         });
 
         poemBeautifier.beautify(text4, (ugly) -> {
             char[] textArray = ugly.toCharArray();
-            StringBuilder string = new StringBuilder();
+            StringBuilder beautiful = new StringBuilder();
 
             for (int i = 0; i < textArray.length; i++) {
                 if (textArray[i] == ' ') {
@@ -48,11 +48,11 @@ public class StreamMain {
 
             for (char value : textArray) {
                 if (value != ' ') {
-                    string.append(value);
+                    beautiful.append(value);
                 }
             }
 
-            return string.toString();
+            return beautiful.toString();
         });
 
 //        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
