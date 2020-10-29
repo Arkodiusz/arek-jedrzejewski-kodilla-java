@@ -1,11 +1,16 @@
 package com.kodilla.stream.portfolio;
 
+import org.junit.Assert;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import java.time.*;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 
+import static java.time.temporal.ChronoUnit.*;
 import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
 
@@ -76,6 +81,32 @@ public class BoardTestSuite {
 
         //Then
         assertEquals(2, longTasks);
+    }
+
+    @Test
+    void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        TaskList taskListInProgress = new TaskList("In progress");
+        double averageWorkingOnTask = project.getTaskLists().stream()
+                .filter(tl -> tl.equals(taskListInProgress))
+                .flatMap(l -> l.getTasks().stream())
+                .mapToDouble(t -> {
+                    long workingTime = 0;
+                    workingTime = t.getCreated().until(LocalDate.now(), DAYS);
+                    return (double)workingTime;
+                })
+                .average().getAsDouble();;
+
+        double actual = averageWorkingOnTask;
+
+        double expected = (0+10+20)/3.0;
+
+        //Then
+        assertEquals(expected, actual, 0.0);
+
     }
 
 
