@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -64,9 +65,9 @@ public class StatisticsTestSuite {
         forumMock.showStatistics();
 
         //Then
-        Assertions.assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost());
+        assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser(), 0.0);
+        assertEquals(0.0, forumMock.getAvgCommentPerPost(), 0.0);
     }
 
     @Test
@@ -86,9 +87,9 @@ public class StatisticsTestSuite {
         forumMock.showStatistics();
 
         //Then
-        Assertions.assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost());
+        assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost(), 0.0);
     }
 
     @Test
@@ -108,9 +109,9 @@ public class StatisticsTestSuite {
         forumMock.showStatistics();
 
         //Then
-        Assertions.assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost());
+        assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost(), 0.0);
     }
 
     @Test
@@ -130,9 +131,9 @@ public class StatisticsTestSuite {
         forumMock.showStatistics();
 
         //Then
-        Assertions.assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost());
+        assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost(), 0.0);
 
     }
 
@@ -153,9 +154,9 @@ public class StatisticsTestSuite {
         forumMock.showStatistics();
 
         //Then
-        Assertions.assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost());
+        assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost(), 0.0);
     }
 
     @Test
@@ -175,9 +176,9 @@ public class StatisticsTestSuite {
         forumMock.showStatistics();
 
         //Then
-        Assertions.assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost());
+        assertEquals(0.0, forumMock.getAvgPostPerUser(), 0.0);
+        assertEquals(0.0, forumMock.getAvgCommentPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost(), 0.0);
     }
 
     @Test
@@ -197,9 +198,9 @@ public class StatisticsTestSuite {
         forumMock.showStatistics();
 
         //Then
-        Assertions.assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser());
-        Assertions.assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost());
+        assertEquals((double)postsQuantity/(double)usersQuantity, forumMock.getAvgPostPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)usersQuantity, forumMock.getAvgCommentPerUser(), 0.0);
+        assertEquals((double)commentsQuantity/(double)postsQuantity, forumMock.getAvgCommentPerPost(), 0.0);
     }
 
 }
