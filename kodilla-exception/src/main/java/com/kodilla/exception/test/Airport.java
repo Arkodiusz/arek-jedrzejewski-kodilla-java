@@ -6,9 +6,11 @@ public class Airport {
 
         AirportManager manager = new AirportManager();
 
-        Flight fl1 = new Flight("Warszawa", "Czikago" );
-        Flight fl2 = new Flight("Berlin", "Wilno" );
-        Flight fl3 = new Flight("Moskwa", "Hel" );
+        Flight fl1 = new Flight("Warszawa", "Warszawa" );
+        Flight fl2 = new Flight("Katowice", "Szczytno" );
+        Flight fl3 = new Flight("Szczytno", "Hel" );
+        Flight fl4 = new Flight("Kraków", "Warszawa" );
+        Flight fl5 = new Flight("Kraków", "Hel" );
 
         try {
             manager.findFlight(fl1);
@@ -25,8 +27,15 @@ public class Airport {
         } catch (RouteNotFoundException e) {
             System.out.println(e.getMessage());
         }
-
-
-
+        try {
+            manager.findFlight(fl4);
+        } catch (RouteNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            manager.findFlight(fl5);
+        } catch (RouteNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
