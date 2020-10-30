@@ -1,4 +1,4 @@
-package com.kodilla.testing.statistics;
+package com.kodilla.testing.forum.statistics;
 
 import com.kodilla.testing.weather.mock.Temperatures;
 
@@ -23,10 +23,14 @@ public class ForumStatistics {
         postCount=statistics.postsCount();
         commentCount=statistics.commentsCount();
 
-        avgPostPerUser=(double)postCount/(double)userCount;
-        avgCommentPerUser=(double)commentCount/(double)userCount;
-        avgCommentPerPost=(double)commentCount/(double)postCount;
+        avgPostPerUser=divide(postCount, userCount);
+        avgCommentPerUser=divide(commentCount, userCount);
+        avgCommentPerPost=divide(commentCount, postCount);
+    }
 
+    private double divide (int a, int b) {
+        if (b == 0) return 0;
+        return (double) a / (double)b;
     }
 
     public void showStatistics() {

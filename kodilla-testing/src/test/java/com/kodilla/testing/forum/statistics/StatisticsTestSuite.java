@@ -1,4 +1,4 @@
-package com.kodilla.testing.statistics;
+package com.kodilla.testing.forum.statistics;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
