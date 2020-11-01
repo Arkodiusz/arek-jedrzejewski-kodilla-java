@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Game {
 
-    public static Player p1 = new Player("");
-    public static Player p2 = new Player("");
-    public static Scanner sc = new Scanner (System.in);
-    Random rand = new Random();
+    public Player p1 = new Player("");
+    public Player p2 = new Player("");
+    private Scanner sc = new Scanner (System.in);
+    private Random rand = new Random();
 
     public static boolean end = false;
 
