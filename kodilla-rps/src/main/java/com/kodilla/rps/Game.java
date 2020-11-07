@@ -10,7 +10,9 @@ public class Game {
     private Scanner sc = new Scanner (System.in);
     private Random rand = new Random();
 
-    public static boolean end = false;
+    private char figure = ' ';
+    private int intFigure = 0;
+    private boolean end = false;
 
     private int goal = 0;
 
@@ -69,71 +71,88 @@ public class Game {
         while(!end) {
             if (p1.getScore()<goal && p2.getScore()<goal) {
 
-                char figure = ' ';
-
                 System.out.println("\n" + p1.getName() + " " + p1.getScore() + " : " + p2.getScore() + " " + p2.getName());
-                System.out.println("Wybierz symbol: ");
+                System.out.println("\nWybierz symbol: ");
                 do {
                     figure = sc.next().charAt(0);
                     if (figure == '1' || figure == '2' || figure == '3') {
 
-                        int intFigure = 0;
                         if (figure == '1') intFigure = 1;
                         if (figure == '2') intFigure = 2;
                         if (figure == '3') intFigure = 3;
 
                         p1.setFigure(intFigure);
-                        System.out.print("" + p1.getName() + " wybrał ");
-                        if (p1.getFigure()==1) System.out.print("kamień");
-                        if (p1.getFigure()==2) System.out.print("papier");
-                        if (p1.getFigure()==3) System.out.print("nożyce");
-                        System.out.println();
+                        showChosenFigure(p1);
 
                         p2.setFigure(rand.nextInt(2)+1);
-                        System.out.print("" + p2.getName() + " wybrał ");
-                        if (p2.getFigure()==1) System.out.print("kamień");
-                        if (p2.getFigure()==2) System.out.print("papier");
-                        if (p2.getFigure()==3) System.out.print("nożyce");
-                        System.out.println();
+                        showChosenFigure(p2);
 
-                        int roundWinner = compare();
-                        if (roundWinner == 1) {
-                            p1.addScore();
-                            System.out.println("Rundę wygrywa " + p1.getName());
-                        }
-                        else if (roundWinner == 2){
-                            p2.addScore();
-                            System.out.println("Rundę wygrywa " + p2.getName());
-                        }
-                        else {
-                            System.out.println("Runda remisowa");
-                        }
+                        revealRoundWinner(compare());
+
                     } else {
                         if (figure == 'x') {
-                            System.out.println("Czy na pewno zakończyć grę? t/n");
-                            char answer = sc.next().charAt(0);
-                            if (answer=='t') end = true;
-                            else gameplay();
+                            confirmExit();
                         }
                         if (figure == 'n') {
-                            System.out.println("Czy na pewno rozpocząć od nowa? t/n");
-                            char answer = sc.next().charAt(0);
-                            if (answer == 't') {
-                                resetGame();
-                            }
-                            else gameplay();
+                            confirmReset();
                         }
                     }
-                } while (figure!= '1' && figure!= '2' && figure!= '3' && figure!= 'x' && figure!= 'n');
+                } while (chosenFigureIsNotCorrect());
 
             } else {
-                System.out.println("\n" + p1.getName() + " " + p1.getScore() + " : " + p2.getScore() + " " + p2.getName());
-                System.out.print("Wygrał ");
-                if(p1.getScore()==goal) System.out.println(p1.getName());
-                if(p2.getScore()==goal)System.out.println(p2.getName());
-                end = true;
+                revealGameWinner();
             }
         }
+    }
+
+    public void revealRoundWinner(int roundWinner) {
+        if (roundWinner == 1) {
+            p1.addScore();
+            System.out.println("Rundę wygrywa " + p1.getName());
+        }
+        else if (roundWinner == 2){
+            p2.addScore();
+            System.out.println("Rundę wygrywa " + p2.getName());
+        }
+        else {
+            System.out.println("Runda remisowa");
+        }
+    }
+
+    public void revealGameWinner() {
+        System.out.println("\n" + p1.getName() + " " + p1.getScore() + " : " + p2.getScore() + " " + p2.getName());
+        System.out.print("Wygrał ");
+        if(p1.getScore()==goal) System.out.println(p1.getName());
+        if(p2.getScore()==goal)System.out.println(p2.getName());
+        end = true;
+    }
+
+    public boolean chosenFigureIsNotCorrect() {
+        return figure!= '1' && figure!= '2' && figure!= '3' && figure!= 'x' && figure!= 'n';
+    }
+
+    public void showChosenFigure(Player p) {
+        System.out.print("" + p.getName() + " wybrał ");
+        if (p.getFigure()==1) System.out.print("kamień");
+        if (p.getFigure()==2) System.out.print("papier");
+        if (p.getFigure()==3) System.out.print("nożyce");
+        System.out.println();
+    }
+
+    public void confirmExit() {
+        System.out.println("Czy na pewno zakończyć grę? t/n");
+        char answer = sc.next().charAt(0);
+        if (answer=='t') end = true;
+        //else gameplay();
+    }
+
+    public void confirmReset() {
+        System.out.println("Czy na pewno rozpocząć od nowa? t/n");
+        char answer = sc.next().charAt(0);
+        if (answer == 't') {
+            resetGame();
+        }
+        //else gameplay();
     }
 
     public void resetGame() {
@@ -141,7 +160,6 @@ public class Game {
         p2.setFigure(0);
         p1.resetScore();
         p2.resetScore();
-
         gameplay();
     }
 }
