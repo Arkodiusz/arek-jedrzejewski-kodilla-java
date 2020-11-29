@@ -23,6 +23,10 @@ public class Flight {
         return departure;
     }
 
+    public Airport getArrival() {
+        return arrival;
+    }
+
     @Override
     public String toString() {
         return "Flight " + code +

@@ -17,11 +17,17 @@ public class FlightProcessor {
     }
 
     public void run() {
-        processFindFrom(gda);
+        processSearchByDeparture(gda);
+        processSearchByArrival(wro);
     }
 
-    private void processFindFrom(Airport departure) {
-        List<Flight> results = searchEngine.findFrom(departure);
-        info.findFrom(results);
+    private void processSearchByDeparture(Airport airport) {
+        List<Flight> results = searchEngine.searchByDeparture(airport);
+        info.searchByDeparture(results);
+    }
+
+    private void processSearchByArrival(Airport airport) {
+        List<Flight> results = searchEngine.searchByArrival(airport);
+        info.searchByArrival(results);
     }
 }
