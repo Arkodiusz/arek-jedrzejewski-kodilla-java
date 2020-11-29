@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.challenges.tanielatanie;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.time.Duration;
 
 public class Flight {
@@ -8,15 +8,17 @@ public class Flight {
     private final String code;
     private final Airport departure;
     private final Airport arrival;
-    private final Time depTime;
+    private final LocalTime depTime;
     private final Duration duration;
+    private final LocalTime arrTime;
 
-    public Flight(String code, Airport departure, Airport arrival, Time depTime, Duration duration) {
+    public Flight(String code, Airport departure, Airport arrival, LocalTime depTime, Duration duration) {
         this.code = code;
         this.departure = departure;
         this.arrival = arrival;
         this.depTime = depTime;
         this.duration = duration;
+        this.arrTime = depTime.plusMinutes(duration.toMinutes());
     }
 
     public Airport getDeparture() {
@@ -27,12 +29,21 @@ public class Flight {
         return arrival;
     }
 
+    public LocalTime getDepTime() {
+        return depTime;
+    }
+
+    public LocalTime getArrTime() {
+        return arrTime;
+    }
+
     @Override
     public String toString() {
         return "Flight " + code +
                 " from " + departure +
+                " (" + depTime + ")" +
                 " to " + arrival +
-                ", at " + depTime +
+                " (" + arrTime + ")" +
                 " (duration " + duration.toMinutes() + " minutes)";
     }
 }

@@ -1,7 +1,7 @@
 package com.kodilla.good.patterns.challenges.tanielatanie;
 
-import java.sql.Time;
 import java.time.Duration;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,9 +25,8 @@ public class Connections {
         add("997", kra, wro, 18, 15, 60);
     }
 
-    public void add(String code, Airport departure, Airport arrival, long hour, long minute, long duration) {
-        long time = (hour * 3600000) + (minute * 60000);
-        list.add(new Flight(code, departure,arrival, new Time(time), Duration.ofMinutes(duration)));
+    public void add(String code, Airport departure, Airport arrival, int hour, int minute, long duration) {
+        list.add(new Flight(code, departure, arrival, LocalTime.of(hour, minute, 0, 0), Duration.ofMinutes(duration)));
     }
 
     @Override
