@@ -6,14 +6,8 @@ public class GlutenFreeShop extends Shop {
         this.name = name;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
     public void process(Order order) {
         System.out.println("GLUTEN FREE received order, thank you");
-
+        order.setHandled(true);
     }
-
 }

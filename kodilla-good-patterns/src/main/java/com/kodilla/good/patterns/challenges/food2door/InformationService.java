@@ -6,8 +6,7 @@ public class InformationService {
         System.out.println("Ordered " +
                 orderRequest.getProduct().getName() +
                 " (" + orderRequest.getQuantity() + " pcs.) " +
-                " for " + orderRequest.getProduct().getPrice() + " PLN" +
-                " in " + orderRequest.getShop().getName());
+                " for " + orderRequest.getProduct().getPrice() * orderRequest.getQuantity() + " PLN" +
+                " \n Wait for delivery.");
     }
-
 }

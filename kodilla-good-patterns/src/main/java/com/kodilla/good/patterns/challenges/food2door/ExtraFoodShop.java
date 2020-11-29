@@ -6,14 +6,8 @@ public class ExtraFoodShop extends Shop {
         this.name = name;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
     public void process(Order order) {
         System.out.println("EXTRA FOOD received order, thank you");
-
+        order.setHandled(true);
     }
-
 }

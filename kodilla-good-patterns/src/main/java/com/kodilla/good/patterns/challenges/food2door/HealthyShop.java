@@ -6,14 +6,12 @@ public class HealthyShop extends Shop {
         this.name = name;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
     public void process(Order order) {
-        System.out.println("HEALTHY received order, thank you");
-
+        System.out.println("HEALTHY received order ( +" +
+                order.getProduct() +
+                " x " +
+                order.getQuantity() +
+                "), thank you");
+        order.setHandled(true);
     }
-
 }
