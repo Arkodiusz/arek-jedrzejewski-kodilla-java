@@ -38,6 +38,11 @@ public class InformationService {
                 System.out.print(f);
                 if(connection.lastIndexOf(f) != connection.size()-1) System.out.print(" -> ");
             }System.out.print("\n");
+
+            // A = wyszukanie lotów z departure
+            // B = wyszukanie lotów do arrival
+            // stream po kolekcji A
+            // podzielic dane ze wzgledu na lotnisko pzresiadkowe
         }
     }
 }

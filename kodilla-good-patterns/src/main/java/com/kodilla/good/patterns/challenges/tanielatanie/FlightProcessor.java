@@ -3,7 +3,11 @@ package com.kodilla.good.patterns.challenges.tanielatanie;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 import static com.kodilla.good.patterns.challenges.tanielatanie.Connections.*;
+
+import static com.kodilla.good.patterns.challenges.tanielatanie.InformationService.*;
 
 public class FlightProcessor {
 
