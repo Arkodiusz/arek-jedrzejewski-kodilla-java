@@ -14,9 +14,13 @@ public class ReaderConfig {
     @Qualifier("book1")
     Book book;
 
+    @Autowired
+            @Qualifier("book2")
+    Book book2;
+
     @Bean
     public Reader getReader() {
-        return new Reader(book);
+        return new Reader(book2);
     }
 
     @Bean(name = "book1")
