@@ -34,12 +34,30 @@ public final class Library extends Prototype<Library> {
         Library clonedLibrary = super.clone();
         clonedLibrary.books = new HashSet<>();
         for (Book book : books) {
-             clonedLibrary.getBooks().add(book.clone());
+             clonedLibrary.getBooks().add(new Book(book.getTitle(), book.getAuthor(), book.getPublicationDate()));
         }
         return clonedLibrary;
     }
 
     public void setName(String s) {
         this.name = s;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Library library = (Library) o;
+
+        if (!name.equals(library.name)) return false;
+        return books.equals(library.books);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + books.hashCode();
+        return result;
     }
 }

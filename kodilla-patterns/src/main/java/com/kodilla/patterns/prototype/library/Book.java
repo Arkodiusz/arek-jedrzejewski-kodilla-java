@@ -1,10 +1,9 @@
 package com.kodilla.patterns.prototype.library;
 
-import com.kodilla.patterns.prototype.Prototype;
 
 import java.time.LocalDate;
 
-public final class Book extends Prototype<Book> {
+public final class Book {
 
     String title;
     String author;
@@ -47,5 +46,17 @@ public final class Book extends Prototype<Book> {
         result = 31 * result + author.hashCode();
         result = 31 * result + publicationDate.hashCode();
         return result;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public LocalDate getPublicationDate() {
+        return publicationDate;
     }
 }

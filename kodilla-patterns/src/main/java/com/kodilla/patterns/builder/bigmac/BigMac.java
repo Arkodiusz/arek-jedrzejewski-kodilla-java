@@ -31,11 +31,6 @@ public class BigMac {
             return this;
         }
 
-        public BigMac.BigMacBuilder ingredients(String ingredient) {
-            this.ingredients.add(ingredient);
-            return this;
-        }
-
         public BigMac.BigMacBuilder ingredients(String... ingredients) {
             this.ingredients.addAll(Arrays.asList(ingredients));
             return this;
