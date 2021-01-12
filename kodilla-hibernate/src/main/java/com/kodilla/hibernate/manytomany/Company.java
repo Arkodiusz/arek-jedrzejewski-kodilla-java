@@ -1,10 +1,16 @@
 package com.kodilla.hibernate.manytomany;
 
+import com.kodilla.hibernate.task.Task;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Company.retrieveByNameBegin",
+        query = "FROM Company WHERE name LIKE concat(:BEGIN, '%')"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
