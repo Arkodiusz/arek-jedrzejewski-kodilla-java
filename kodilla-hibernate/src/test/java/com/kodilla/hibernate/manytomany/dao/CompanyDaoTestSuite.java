@@ -109,9 +109,9 @@ class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
-        List<Company> result1 = companyDao.retrieveByNameBegin("Sof");
-        List<Company> result2 = companyDao.retrieveByNameBegin("Gre");
-        List<Company> result3 = companyDao.retrieveByNameBegin("Abc");
+        List<Company> result1 = companyDao.retrieveByNameBegin("SofXXXXX");
+        List<Company> result2 = companyDao.retrieveByNameBegin("GreXXXX");
+        List<Company> result3 = companyDao.retrieveByNameBegin("AbC");
 
         //Then
         try {

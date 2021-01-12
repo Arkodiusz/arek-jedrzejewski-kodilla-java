@@ -5,9 +5,10 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
+@NamedNativeQuery(
         name = "Company.retrieveByNameBegin",
-        query = "FROM Company WHERE name LIKE concat(:BEGIN, '%')"
+        query = "SELECT * FROM COMPANIES WHERE LEFT(COMPANY_NAME,3) LIKE CONCAT(LEFT(:BEGIN,3), '%')",
+        resultClass = Company.class
 )
 @Entity
 @Table(name = "COMPANIES")
