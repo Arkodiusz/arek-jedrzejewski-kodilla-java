@@ -64,5 +64,14 @@ public class InvoiceDaoTestSuite {
         //CleanUp
         invoiceDao.deleteById(invoice01Id);
         invoiceDao.deleteById(invoice02Id);
+
+        itemDao.delete(itemMilk);
+        itemDao.delete(itemEgg);
+        itemDao.delete(itemRyeBread);
+        itemDao.delete(itemWheatBread);
+
+        productDao.delete(bread);
+        productDao.delete(milk);
+        productDao.delete(egg);
     }
 }
