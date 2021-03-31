@@ -10,6 +10,11 @@ import java.util.List;
         query = "SELECT * FROM COMPANIES WHERE LEFT(COMPANY_NAME,3) LIKE CONCAT(LEFT(:BEGIN,3), '%')",
         resultClass = Company.class
 )
+@NamedNativeQuery(
+        name = "Company.retrieveByNameFragment",
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%', :FRAGMENT, '%')",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

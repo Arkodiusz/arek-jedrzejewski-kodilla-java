@@ -5,12 +5,16 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
+@NamedNativeQuery(
         name = "Employee.retrieveByLastname",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
+        query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE :LASTNAME"
 )
-@Entity
-@Table(name = "EMPLOYEES")
+@NamedNativeQuery(
+        name = "Employee.retrieveByNameFragment",
+        query = "SELECT * FROM EMPLOYEES WHERE FIRSTNAME LIKE CONCAT('%', :FRAGMENT, '%') OR LASTNAME LIKE CONCAT('%', :FRAGMENT, '%')",
+        resultClass = Employee.class
+)
+@Entity(name = "EMPLOYEES")
 public class Employee {
 
     private int id;
