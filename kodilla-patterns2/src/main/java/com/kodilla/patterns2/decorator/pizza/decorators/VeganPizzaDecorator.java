@@ -14,12 +14,6 @@ public class VeganPizzaDecorator extends AbstractPizzaOrderDecorator {
 
     public void removeNotVeganProducts(PizzaOrder pizzaOrder) {
         List<Ingredients> list = pizzaOrder.getIngredients();
-        list.removeIf(Ingredients::isNotVegan);
-
-//        for (int i = 0; i < list.size(); i++) {
-//            if (!list.get(i).isVegan()) {
-//                list.remove(i);
-//            }
-//        }
+        list.removeIf(ingredients -> !ingredients.isVegan());
     }
 }

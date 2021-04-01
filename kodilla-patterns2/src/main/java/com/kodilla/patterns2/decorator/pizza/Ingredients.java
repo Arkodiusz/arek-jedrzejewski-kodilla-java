@@ -31,10 +31,4 @@ public enum Ingredients {
     public boolean isVegan() {
         return isVegan;
     }
-
-    public boolean isNotVegan() {
-        return !isVegan;
-    }
-
-
 }
