@@ -7,7 +7,8 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Employee.retrieveByLastname",
-        query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE :LASTNAME"
+        query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE :LASTNAME",
+        resultClass = Employee.class
 )
 @NamedNativeQuery(
         name = "Employee.retrieveByNameFragment",
